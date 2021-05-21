@@ -91,7 +91,7 @@ async function passParamsToQuery(params){
         try{
             const queryParam = await dashboard.findParameterAsync(queryParamName)
             const newValueParam = await queryParam.changeValueAsync(p.currentValue.value)
-            console.log(queryParam.name + ' has a new value : '+newValueParam.value)
+            // console.log(queryParam.name + ' has a new value : '+newValueParam.value)
         }catch(e){
             console.log('Error while setting a parameter => '+e)
         }
@@ -111,7 +111,14 @@ function sleep(milliseconds) {
 
 
 function loadResult(result){
-    console.log('Loading result -5ee')
+    console.log('Appending to DOM')
+
+    for(c in result.columns)(
+        console.log(c.value)
+    )
+
+
+    console.log('Loading result')
     $('#result').DataTable({
         data : result.data,
         buttons : [
