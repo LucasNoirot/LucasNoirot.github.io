@@ -1,4 +1,4 @@
-var dashboard, dataSheet, datasource, stateParamName,  stateParam, queryData, fetchData;
+var dashboard, dataSheet, datasource, stateParamName,  stateParam, fetchData;
 const inputParams = []
 const queryParams = []
 
@@ -59,8 +59,7 @@ function clickQueryButton(){
      }).then(function(sumdata){
          //Log et assigne le resultat de la requête dans une table de données
          console.log(sumdata)
-         queryData = sumdata
-         loadResult(sumData)
+         loadResult(sumdata)
      }).catch(function(err){
          console.log('An error occured : '+err)
      })
