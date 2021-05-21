@@ -121,10 +121,10 @@ function loadResult(result){
             }
         ]
     });
-    $('#downloadButton').click( ()=> {
-        $('#result').DataTable().buttons(0,0).trigger()
-    })
-    unlockDownloadButton()
+    // $('#downloadButton').click( ()=> {
+    //     $('#result').DataTable().buttons(0,0).trigger()
+    // })
+    // unlockDownloadButton()
   }
 
   function unlockDownloadButton(){
