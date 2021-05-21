@@ -64,7 +64,7 @@ function clickQueryButton(){
          console.log(sumdata)
          queryData = sumdata
          fetchData = false
-         loadDataToButton();
+         loadResult()
      }).catch(function(err){
          console.log('An error occured : '+err)
      })
