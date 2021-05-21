@@ -61,7 +61,7 @@ function clickQueryButton(){
          console.log(sumdata)
          loadResult(sumdata)
      }).catch(function(err){
-         console.log('An error occured : '+err.lineNumber)
+         console.log('An error occured : '+err)
      })
 }
 
@@ -121,10 +121,13 @@ function loadResult(result){
             }
         ]
     });
+    console.log('loaded')
     $('#downloadButton').click( ()=> {
         $('#result').DataTable().buttons(0,0).trigger()
     })
+    console.log('tied button')
     unlockDownloadButton()
+    console.log('unlocked')
   }
 
   function unlockDownloadButton(){
