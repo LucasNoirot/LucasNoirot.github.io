@@ -4,10 +4,7 @@ const queryParams = []
 
 //Initialise l'extension dés que le DOM est chargé
 $(document).ready(function(){  
-    tableau.extensions.initializeAsync().then(function () { 
-        
-        fetchData = false;
-        
+    tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
         
         //Assigne la vue contenant les données à une variable 
@@ -63,8 +60,7 @@ function clickQueryButton(){
          //Log et assigne le resultat de la requête dans une table de données
          console.log(sumdata)
          queryData = sumdata
-         fetchData = false
-         loadResult()
+         loadResult(sumData)
      }).catch(function(err){
          console.log('An error occured : '+err)
      })
