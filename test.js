@@ -112,9 +112,9 @@ function sleep(milliseconds) {
 
 function loadResult(result){
     result = JSON.stringify(result.data)
-    console.log('Loading result -ee')
+    console.log('Loading result -0ee')
     $('#result').DataTable({
-        columns: result._columns,
+        columns: result._columns.data,
         data : result._data,
         buttons : [
             {
