@@ -111,10 +111,11 @@ function sleep(milliseconds) {
 
 
 function loadResult(result){
+    result = JSON.stringify(result.data)
     console.log('Loading result - values')
     $('#result').DataTable({
-        columns: result._columns.values(),
-        data : result._data.values(),
+        columns: result.columns,
+        data : result.data,
         buttons : [
             {
                 extends : 'csv'
