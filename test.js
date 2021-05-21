@@ -111,7 +111,7 @@ function sleep(milliseconds) {
 
 
 function loadResult(result){
-    console.log('Loading result - data2')
+    console.log('Loading result - text')
     $('#result').DataTable({
         columns: result._columns.text,
         data : result._data.text,
