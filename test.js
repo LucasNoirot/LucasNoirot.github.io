@@ -61,7 +61,7 @@ function clickQueryButton(){
          console.log(sumdata)
          loadResult(sumdata)
      }).catch(function(err){
-         console.log('An error occured : '+err)
+         console.log('An error occured : '+err.lineNumber)
      })
 }
 
@@ -111,20 +111,20 @@ function sleep(milliseconds) {
 
 
 function loadResult(result){
-    console.log('Loading result - text2')
+    console.log('Loading result - data')
     $('#result').DataTable({
-        columns: result._columns.text,
-        data : result._data.text,
+        columns: result._columns.data,
+        data : result._data.data,
         buttons : [
             {
                 extends : 'csv'
             }
         ]
     });
-    // $('#downloadButton').click( ()=> {
-    //     $('#result').DataTable().buttons(0,0).trigger()
-    // })
-    // unlockDownloadButton()
+    $('#downloadButton').click( ()=> {
+        $('#result').DataTable().buttons(0,0).trigger()
+    })
+    unlockDownloadButton()
   }
 
   function unlockDownloadButton(){
