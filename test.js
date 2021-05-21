@@ -112,7 +112,7 @@ function sleep(milliseconds) {
 
 function loadResult(result){
     columns = result.columns
-    console.log(columns.length)
+    console.log(columns.values())
     console.log('Loading result -3ee')
     $('#result').DataTable({
         columns: result.columns,
