@@ -44,5 +44,6 @@ nav li {
 .nonAvailable{
     background-color: dimgrey;
     opacity: 0.7;
+    pointer-events: none;
 }
 
