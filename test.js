@@ -7,7 +7,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 4')
+        console.log('test 5')
         
         //Assigne la vue contenant les données à une variable 
         dashboard.worksheets.forEach(function(worksheet){
