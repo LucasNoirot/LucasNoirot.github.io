@@ -146,12 +146,12 @@ function loadResult(result){
                 }
             }
         ]
-    }
-    );
+    });
+
     console.log('loaded')
     $('#downloadButton').click( ()=> {
         console.log('clicked')
-        $('#result').DataTable().buttons(0,0).trigger()
+        $('#result').DataTable().buttons('csv').trigger()
     })
     console.log('tied button')
     unlockDownloadButton()
