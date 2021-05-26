@@ -1,13 +1,10 @@
-var dashboard, dataSheet, datasource, stateParamName,  stateParam, queryData, fetchData;
+var dashboard, dataSheet, datasource, stateParamName,  stateParam, fetchData;
 const inputParams = []
 const queryParams = []
 
 //Initialise l'extension dés que le DOM est chargé
 $(document).ready(function(){  
-    tableau.extensions.initializeAsync().then(function () { 
-        
-        fetchData = false;
-        
+    tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
         
         //Assigne la vue contenant les données à une variable 
@@ -62,21 +59,12 @@ function clickQueryButton(){
      }).then(function(sumdata){
          //Log et assigne le resultat de la requête dans une table de données
          console.log(sumdata)
-         queryData = sumdata
+         loadResult(sumdata)
      }).catch(function(err){
          console.log('An error occured : '+err)
      })
 }
 
-function clickDownloadButton(){
-    baseUrl = document.referrer.split('?')[0]
-    // baseUrl = baseUrl.split('/').slice(0, -1).join('/')
-    // url = baseUrl + '/' + dataSheet.name + '/exportCrossTab/'
-
-    url = baseUrl + '.csv'
-
-    window.open(url)
-}
 
 //Stockes les paramètres allant uniquement servir à recevoir les informations de l'utilisateur dans une list
 //Les autres paramètres (contenant '_') vont uniquement servir à lancer la requête quand le bouton est cliqué
@@ -103,7 +91,7 @@ async function passParamsToQuery(params){
         try{
             const queryParam = await dashboard.findParameterAsync(queryParamName)
             const newValueParam = await queryParam.changeValueAsync(p.currentValue.value)
-            console.log(queryParam.name + ' has a new value : '+newValueParam.value)
+            // console.log(queryParam.name + ' has a new value : '+newValueParam.value)
         }catch(e){
             console.log('Error while setting a parameter => '+e)
         }
@@ -120,9 +108,34 @@ function sleep(milliseconds) {
     } while (currentDate - date < milliseconds);
   }
 
-  function DataValueToCSV(dataValueObject){
-      
+
+
+function loadResult(result){
+    console.log('Appending to DOM')
+
+    for(c in result.columns)(
+        console.log(c.value)
+    )
+
+
+    console.log('Loading result')
+    $('#result').DataTable(result);
+    console.log('loaded')
+    $('#downloadButton').click( ()=> {
+        $('#result').DataTable().buttons(0,0).trigger()
+    })
+    console.log('tied button')
+    unlockDownloadButton()
+    console.log('unlocked')
   }
+
+  function unlockDownloadButton(){
+      $('#downloadButton').removeClass('nonAvailable').addClass('available')
+  }
+
+  function lockDownloadButton(){
+    $('#downloadButton').removeClass('available').addClass('nonAvailable')
+}
 
 
       
