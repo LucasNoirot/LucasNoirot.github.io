@@ -7,7 +7,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 36')
+        console.log('test 37')
 
         
         //Assigne la vue contenant les données à une variable 
@@ -165,7 +165,7 @@ function downloadCSV(){
         content += (newLine + "\r\n")
     })
 
-    var encodeUri = encodeUri(content)
+    var encodeUri = encodeURI(content)
     window.open(content)
 }
 
