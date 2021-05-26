@@ -1,4 +1,4 @@
-var dashboard, dataSheet, datasource, stateParamName,  stateParam, query_result, resultTable;
+var dashboard, dataSheet, datasource, stateParamName, stateParam, query_result, resultTable;
 const inputParams = []
 const queryParams = []
 
@@ -7,7 +7,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 42')
+        console.log('test 43')
 
         
         //Assigne la vue contenant les données à une variable 
@@ -44,7 +44,15 @@ $(document).ready(function(){
 function clickQueryButton(){
     
     //Réinitialise les variables contenant le résultat 
-    query_result = null
+    if(query_result != null){
+        console.log('removing previous data')
+        query_result = null;
+        resultTable.clear()
+    }
+    if($('#downloadButton').hasClass('available')){
+        lockDownloadButton()
+    }
+    
      
     console.log('Query button clicked')
     
@@ -180,12 +188,11 @@ function downloadCSV(){
 }
 
 
+function unlockDownloadButton(){
+    $('#downloadButton').removeClass('nonAvailable').addClass('available')
+}
 
-  function unlockDownloadButton(){
-      $('#downloadButton').removeClass('nonAvailable').addClass('available')
-  }
-
-  function lockDownloadButton(){
+function lockDownloadButton(){
     $('#downloadButton').removeClass('available').addClass('nonAvailable')
 }
 
