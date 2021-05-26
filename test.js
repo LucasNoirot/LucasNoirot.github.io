@@ -121,6 +121,7 @@ function loadResult(result){
         row = []
         for(var j = 0 ;j < result.data[i]; j++){
             row.push(result.data[i][j]._value)
+            console.log(row)
         }
         data.push(row)
     }
