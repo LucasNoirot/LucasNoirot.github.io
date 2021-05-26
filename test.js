@@ -7,7 +7,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 17')
+        console.log('test 18')
         
         //Assigne la vue contenant les données à une variable 
         dashboard.worksheets.forEach(function(worksheet){
@@ -120,12 +120,13 @@ function loadResult(result){
     for(var i = 0; i < result.data.length; i++){
         row = []
         for(var j = 0 ; j < result.data[i]; j++){
+            console.log(result.data[i][j])
+            console.log(result.data[i][j]._value)
             row.push(result.data[i][j]._value)
         }
         data.push(row)
     }
 
-    console.log(data)
 
 
     for(var i = 0; i < result.columns.length; i++){
