@@ -7,7 +7,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 20')
+        console.log('test 21')
         
         //Assigne la vue contenant les données à une variable 
         dashboard.worksheets.forEach(function(worksheet){
@@ -92,7 +92,6 @@ async function passParamsToQuery(params){
         try{
             const queryParam = await dashboard.findParameterAsync(queryParamName)
             const newValueParam = await queryParam.changeValueAsync(p.currentValue.value)
-            // console.log(queryParam.name + ' has a new value : '+newValueParam.value)
         }catch(e){
             console.log('Error while setting a parameter => '+e)
         }
@@ -111,9 +110,32 @@ function sleep(milliseconds) {
 
 
 
+//Fonction chargeant les données renvoyées par le serveur sur la page
 function loadResult(result){
-    console.log('Appending to DOM')
+    data_dict = extractData(result)
 
+    console.log('Loading result')
+    $('#result').DataTable({
+        "scrollX" : true,
+        "columns" : data_dict['columns'],
+        "data" : data_dict['data'],
+        "buttons" : [
+            {
+                extend: 'csv',
+                text: 'Télécharger CSV',
+                exportOptions: {
+                    modifier: {
+                        search: 'none'
+                    }
+                }
+            }
+        ]
+    });
+    unlockDownloadButton()
+  }
+
+//Fonction permettant de convertir le résultat renvoyé par le serveur en arrays afin de les charger dans <table></table>
+function extractData(data){
     cols = []
     data = []
 
@@ -129,34 +151,12 @@ function loadResult(result){
         cols.push({'title': result.columns[i]._fieldName})
     }
 
+    return {
+        'columns' : cols,
+        'data':data    
+        }
+}
 
-    console.log('Loading result')
-    $('#result').DataTable({
-        "scrollX" : true,
-        "columns" : cols,
-        "data" : data,
-        "buttons" : [
-            {
-                extend: 'csv',
-                text: 'Télécharger CSV',
-                exportOptions: {
-                    modifier: {
-                        search: 'none'
-                    }
-                }
-            }
-        ]
-    });
-
-    console.log('loaded')
-    $('#downloadButton').click( ()=> {
-        console.log('clicked')
-        $('#result').DataTable().buttons('csv').trigger()
-    })
-    console.log('tied button')
-    unlockDownloadButton()
-    console.log('unlocked')
-  }
 
   function unlockDownloadButton(){
       $('#downloadButton').removeClass('nonAvailable').addClass('available')
