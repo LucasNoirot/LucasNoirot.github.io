@@ -119,7 +119,7 @@ function loadResult(result){
 
     for(var i = 0; i < result.data.length; i++){
         row = []
-        for(var j = 0 ; j < result.data[i]; j++){
+        for(var j = 0 ; j < result.data[i].length; j++){
             console.log(result.data[i][j])
             console.log(result.data[i][j]._value)
             row.push(result.data[i][j]._value)
