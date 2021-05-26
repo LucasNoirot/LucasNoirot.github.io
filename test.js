@@ -7,7 +7,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 3')
+        console.log('test 4')
         
         //Assigne la vue contenant les données à une variable 
         dashboard.worksheets.forEach(function(worksheet){
@@ -115,13 +115,13 @@ function loadResult(result){
     console.log('Appending to DOM')
 
     for(var i = 0; i < result.columns.length; i++){
-        console.log(result.columns[i].data())
+        console.log(result.columns[i].data)
     }
 
 
     console.log('Loading result')
     $('#result').DataTable(
-        result.data() 
+        result.data
     );
     console.log('loaded')
     $('#downloadButton').click( ()=> {
