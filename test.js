@@ -125,22 +125,21 @@ function loadResult(result){
         data.push(row)
     }
 
-
-
     for(var i = 0; i < result.columns.length; i++){
-        console.log('col attribute-> '+ result.columns[i]._fieldName)
         cols.push({'title': result.columns[i]._fieldName})
     }
 
 
     console.log('Loading result')
     $('#result').DataTable({
+        "scrollX" : true,
         "columns" : cols,
         "data" : data
     }
     );
     console.log('loaded')
     $('#downloadButton').click( ()=> {
+        console.log('clicked')
         $('#result').DataTable().buttons(0,0).trigger()
     })
     console.log('tied button')
