@@ -115,14 +115,13 @@ function loadResult(result){
     console.log('Appending to DOM')
 
     for(var i = 0; i < result.columns.length; i++){
-        console.log('just col -> '+ result.columns[i])
         console.log('col attribute-> '+ result.columns[i]._fieldName)
     }
 
 
     console.log('Loading result')
     $('#result').DataTable(
-        result
+        result._value
     );
     console.log('loaded')
     $('#downloadButton').click( ()=> {
