@@ -1,4 +1,4 @@
-var dashboard, dataSheet, datasource, stateParamName,  stateParam, fetchData;
+var dashboard, dataSheet, datasource, stateParamName,  stateParam, query_result;
 const inputParams = []
 const queryParams = []
 
@@ -7,7 +7,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 25')
+        console.log('test 26')
         
         //Assigne la vue contenant les données à une variable 
         dashboard.worksheets.forEach(function(worksheet){
@@ -111,7 +111,7 @@ function sleep(milliseconds) {
 
 //Fonction chargeant les données renvoyées par le serveur sur la page
 function loadResult(result){
-    data_dict = extractData(result)
+    query_result = extractData(result)
 
     console.log('Loading result')
     $('#result').DataTable({
@@ -144,6 +144,35 @@ function extractData(rawData){
         'columns' : cols,
         'data' : body   
         }
+}
+
+//Fonction convertissant le résultat en format CSv et lançant le téléchargement
+function downloadCSV(){
+    let content = "data:text/csv;charset=utf-8,"
+
+    if(query_result == null){
+        console.log('Trying to create CSV from empty result')
+        return
+    }
+
+    headers = query_result['columns'].join(',')
+    content += (headers + "\r\n")
+
+    query_result['data'].forEach(function(row){
+        let newLIne = row.join(',')
+        content += (newLine + "\r\n")
+    })
+
+    var encodeUri = encodeUri(content)
+    window.open(content)
+
+
+
+
+
+
+
+
 }
 
 
