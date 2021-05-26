@@ -7,7 +7,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 45')
+        console.log('test 46')
 
         
         //Assigne la vue contenant les données à une variable 
@@ -127,6 +127,8 @@ function loadResult(result){
     console.log('Loading result')
     resultTable = $('#result').DataTable({
         "scrollX" : true,
+        "scrollY" : true,
+        "pageLength": 20,
         "columns" : query_result['columns'],
         "data" : query_result['data']
     });
@@ -148,7 +150,8 @@ function extractData(rawData){
     }
 
     for(var i = 0; i < rawData.columns.length; i++){
-        cols.push({'title': rawData.columns[i]._fieldName})
+        cols.push({'title': rawData.columns[i]._fieldName,
+                   'class': 'display compact'})
     }
 
     return  {
