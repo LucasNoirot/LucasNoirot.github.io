@@ -7,7 +7,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 30')
+        console.log('test 31')
         
         //Assigne la vue contenant les données à une variable 
         dashboard.worksheets.forEach(function(worksheet){
@@ -43,7 +43,7 @@ $(document).ready(function(){
 function clickQueryButton(){
     
     //Réinitialise les variables contenant le résultat 
-    if( $('#result').DataTable()){
+    if( $('#result').DataTable() != undefined){
         $('#result').DataTable().clear()
     }
     query_result = null
