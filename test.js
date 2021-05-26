@@ -7,7 +7,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 12')
+        console.log('test 13')
         
         //Assigne la vue contenant les données à une variable 
         dashboard.worksheets.forEach(function(worksheet){
@@ -115,6 +115,8 @@ function loadResult(result){
     console.log('Appending to DOM')
 
     cols = []
+    data = []
+
 
     for(var i = 0; i < result.columns.length; i++){
         console.log('col attribute-> '+ result.columns[i]._fieldName)
@@ -125,7 +127,7 @@ function loadResult(result){
     console.log('Loading result')
     $('#result').DataTable({
         "columns" : cols,
-        "data" : result._data
+        "data" : result.data
     }
     );
     console.log('loaded')
