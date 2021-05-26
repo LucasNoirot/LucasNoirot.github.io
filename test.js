@@ -119,14 +119,7 @@ function loadResult(result){
 
 
     console.log('Loading result')
-    $('#result').DataTable({
-        data : result.data,
-        buttons : [
-            {
-                extends : 'csv'
-            }
-        ]
-    });
+    $('#result').DataTable(result);
     console.log('loaded')
     $('#downloadButton').click( ()=> {
         $('#result').DataTable().buttons(0,0).trigger()
