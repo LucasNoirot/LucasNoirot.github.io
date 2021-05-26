@@ -7,7 +7,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 26')
+        console.log('test 27')
         
         //Assigne la vue contenant les données à une variable 
         dashboard.worksheets.forEach(function(worksheet){
@@ -116,8 +116,8 @@ function loadResult(result){
     console.log('Loading result')
     $('#result').DataTable({
         "scrollX" : true,
-        "columns" : data_dict['columns'],
-        "data" : data_dict['data']
+        "columns" : query_result['columns'],
+        "data" : query_result['data']
     });
     unlockDownloadButton()
   }
