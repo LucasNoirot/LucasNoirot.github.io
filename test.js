@@ -7,7 +7,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 22')
+        console.log('test 23')
         
         //Assigne la vue contenant les données à une variable 
         dashboard.worksheets.forEach(function(worksheet){
@@ -60,7 +60,6 @@ function clickQueryButton(){
         return dataSheet.getSummaryDataAsync()
      }).then(function(sumdata){
          //Log et assigne le resultat de la requête dans une table de données
-         console.log(sumdata)
          loadResult(sumdata)
      }).catch(function(err){
          console.log('An error occured : '+err)
@@ -126,7 +125,7 @@ function loadResult(result){
 //Fonction permettant de convertir le résultat renvoyé par le serveur en arrays afin de les charger dans <table></table>
 function extractData(data){
     cols = []
-    data = []
+    body = []
     result = {}
 
     for(var i = 0; i < result.data.length; i++){
@@ -134,22 +133,19 @@ function extractData(data){
         for(var j = 0 ; j < result.data[i].length; j++){
             row.push(result.data[i][j]._value)
         }
-        data.push(row)
+        body.push(row)
     }
 
     for(var i = 0; i < result.columns.length; i++){
         cols.push({'title': result.columns[i]._fieldName})
     }
 
-    result =  {
+    return  {
         'columns' : cols,
-        'data' : data    
+        'data' : body   
         }
-
-    print(result)
-
-    return result
 }
+
 
 
   function unlockDownloadButton(){
