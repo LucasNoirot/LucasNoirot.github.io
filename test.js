@@ -7,7 +7,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 28')
+        console.log('test 29')
         
         //Assigne la vue contenant les données à une variable 
         dashboard.worksheets.forEach(function(worksheet){
@@ -40,7 +40,12 @@ $(document).ready(function(){
 });
 
 //Fonction déclenchée quand le bouton est cliqué
-function clickQueryButton(){   
+function clickQueryButton(){
+    
+    //Réinitialise les variables contenant le résultat 
+    $('#result').DataTable().clear()
+    query_result = null
+     
     console.log('Query button clicked')
     
     //Pause l'éxecution une demi seconde pour laisser le temps aux paramètres de l'utiliateur de s'enregistrer
@@ -71,7 +76,6 @@ function clickQueryButton(){
 //Les autres paramètres (contenant '_') vont uniquement servir à lancer la requête quand le bouton est cliqué
 async function getParams(){
     let params = await dashboard.getParametersAsync()
-    console.log('FETCHING PARAMS done, starting assigning')
 
     params.forEach(function(param){
         if(! (param.name.includes('Etat') || param.name.startsWith('_')) ){
@@ -80,8 +84,6 @@ async function getParams(){
             queryParams.push(param)
         }
     })
-
-    console.log('get parameters done')
 }
 
 //Transfere la valeur des paramètres entrés par l'utilisateur à ceux utilisés dans la requête
@@ -106,7 +108,6 @@ function sleep(milliseconds) {
       currentDate = Date.now();
     } while (currentDate - date < milliseconds);
   }
-
 
 
 //Fonction chargeant les données renvoyées par le serveur sur la page
