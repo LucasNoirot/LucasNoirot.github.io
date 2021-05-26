@@ -73,7 +73,6 @@ async function getParams(){
     console.log('FETCHING PARAMS done, starting assigning')
 
     params.forEach(function(param){
-        console.log(param.name)
         if(! (param.name.includes('Etat') || param.name.startsWith('_')) ){
             inputParams.push(param)
         }else if (param.name.startsWith('_')){
