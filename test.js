@@ -7,7 +7,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 21')
+        console.log('test 22')
         
         //Assigne la vue contenant les données à une variable 
         dashboard.worksheets.forEach(function(worksheet){
@@ -118,18 +118,7 @@ function loadResult(result){
     $('#result').DataTable({
         "scrollX" : true,
         "columns" : data_dict['columns'],
-        "data" : data_dict['data'],
-        "buttons" : [
-            {
-                extend: 'csv',
-                text: 'Télécharger CSV',
-                exportOptions: {
-                    modifier: {
-                        search: 'none'
-                    }
-                }
-            }
-        ]
+        "data" : data_dict['data']
     });
     unlockDownloadButton()
   }
@@ -138,6 +127,7 @@ function loadResult(result){
 function extractData(data){
     cols = []
     data = []
+    result = {}
 
     for(var i = 0; i < result.data.length; i++){
         row = []
@@ -151,10 +141,14 @@ function extractData(data){
         cols.push({'title': result.columns[i]._fieldName})
     }
 
-    return {
+    result =  {
         'columns' : cols,
-        'data':data    
+        'data' : data    
         }
+
+    print(result)
+
+    return result
 }
 
 
