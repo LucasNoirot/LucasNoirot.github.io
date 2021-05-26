@@ -7,7 +7,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 18')
+        console.log('test 19')
         
         //Assigne la vue contenant les données à une variable 
         dashboard.worksheets.forEach(function(worksheet){
@@ -120,8 +120,6 @@ function loadResult(result){
     for(var i = 0; i < result.data.length; i++){
         row = []
         for(var j = 0 ; j < result.data[i].length; j++){
-            console.log(result.data[i][j])
-            console.log(result.data[i][j]._value)
             row.push(result.data[i][j]._value)
         }
         data.push(row)
@@ -135,19 +133,19 @@ function loadResult(result){
     }
 
 
-    // console.log('Loading result')
-    // $('#result').DataTable({
-    //     "columns" : cols,
-    //     "data" : data
-    // }
-    // );
-    // console.log('loaded')
-    // $('#downloadButton').click( ()=> {
-    //     $('#result').DataTable().buttons(0,0).trigger()
-    // })
-    // console.log('tied button')
-    // unlockDownloadButton()
-    // console.log('unlocked')
+    console.log('Loading result')
+    $('#result').DataTable({
+        "columns" : cols,
+        "data" : data
+    }
+    );
+    console.log('loaded')
+    $('#downloadButton').click( ()=> {
+        $('#result').DataTable().buttons(0,0).trigger()
+    })
+    console.log('tied button')
+    unlockDownloadButton()
+    console.log('unlocked')
   }
 
   function unlockDownloadButton(){
