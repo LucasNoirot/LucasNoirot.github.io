@@ -115,7 +115,7 @@ function loadResult(result){
     console.log('Appending to DOM')
 
     for(var i = 0; i < result.columns.length; i++){
-        console.log(result.columns[i].data)
+        console.log(result.columns[i].data().toArray())
     }
 
 
