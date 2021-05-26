@@ -7,7 +7,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 41')
+        console.log('test 42')
 
         
         //Assigne la vue contenant les données à une variable 
@@ -158,7 +158,7 @@ function downloadCSV(){
     }
 
     let headers = ''
-    queryResult['columns'].forEach(function(col){
+    query_result['columns'].forEach(function(col){
         headers += col['title'] + ';'
     })
 
