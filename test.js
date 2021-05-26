@@ -7,7 +7,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 44')
+        console.log('test 45')
 
         
         //Assigne la vue contenant les données à une variable 
@@ -44,14 +44,16 @@ $(document).ready(function(){
 function clickQueryButton(){
     
     //Réinitialise les variables contenant le résultat 
-    if(query_result != null){
-        console.log('removing previous data')
-        query_result = null;
-        resultTable.destroy()
-    }
     if($('#downloadButton').hasClass('available')){
         lockDownloadButton()
     }
+    if(query_result != null){
+        console.log('removing previous data')
+        query_result = null
+        resultTable.clear()
+        resultTable.destroy()
+    }
+
     
      
     console.log('Query button clicked')
