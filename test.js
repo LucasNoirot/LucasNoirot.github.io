@@ -7,7 +7,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 19')
+        console.log('test 20')
         
         //Assigne la vue contenant les données à une variable 
         dashboard.worksheets.forEach(function(worksheet){
@@ -136,7 +136,15 @@ function loadResult(result){
         "columns" : cols,
         "data" : data,
         "buttons" : [
-            'csv'
+            {
+                extend: 'csv',
+                text: 'Télécharger CSV',
+                exportOptions: {
+                    modifier: {
+                        search: 'none'
+                    }
+                }
+            }
         ]
     }
     );
