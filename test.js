@@ -7,7 +7,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 24')
+        console.log('test 25')
         
         //Assigne la vue contenant les données à une variable 
         dashboard.worksheets.forEach(function(worksheet){
@@ -125,15 +125,15 @@ function loadResult(result){
 //Fonction permettant de convertir le résultat renvoyé par le serveur en arrays afin de les charger dans <table></table>
 function extractData(rawData){
     cols = []
-    data = []
+    body = []
     result = {}
 
     for(var i = 0; i < rawData.data.length; i++){
         row = []
         for(var j = 0 ; j < rawData.data[i].length; j++){
-            row.push(result.data[i][j]._value)
+            row.push(rawData.data[i][j]._value)
         }
-        datapush(row)
+        body.push(row)
     }
 
     for(var i = 0; i < rawData.columns.length; i++){
@@ -142,7 +142,7 @@ function extractData(rawData){
 
     return  {
         'columns' : cols,
-        'data' : data   
+        'data' : body   
         }
 }
 
