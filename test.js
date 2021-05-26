@@ -134,7 +134,10 @@ function loadResult(result){
     $('#result').DataTable({
         "scrollX" : true,
         "columns" : cols,
-        "data" : data
+        "data" : data,
+        "buttons" : [
+            'csv'
+        ]
     }
     );
     console.log('loaded')
