@@ -102,8 +102,11 @@ async function passParamsToQuery(params){
     for(const p of params){
         queryParamName = '_' + p.name.trim()
         try{
+            console.log('Looking for '+queryParamName)
             const queryParam = await dashboard.findParameterAsync(queryParamName)
+            console.log(queryParamName + 'found, now waiting to set new value ->'+p.currentValue)
             const newValueParam = await queryParam.changeValueAsync(p.currentValue.value)
+            console.log('Valye of '+queryParamName + 'changed')
         }catch(e){
             console.log('Error while setting a parameter => '+e)
         }
