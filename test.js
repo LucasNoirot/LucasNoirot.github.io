@@ -7,7 +7,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 51')
+        console.log('test 52')
 
         
         //Assigne la vue contenant les données à une variable 
@@ -130,9 +130,6 @@ function loadResult(result){
         "scrollX" : true,
         "scrollY" : true,
         "deferRender": true,
-        "columnDefs": [
-            { "orderable": false, "targets": -1 }
-         ],
         "columns" : query_result['columns'],
         "data" : query_result['data'],
         "language": {
@@ -168,8 +165,11 @@ function extractData(rawData){
     }
 
     for(var i = 0; i < rawData.columns.length; i++){
-        cols.push({'title': rawData.columns[i]._fieldName,
-                   'data': i})
+        columnName = rawData.columns[i]._fieldName.substring(1)
+        columnIndex = parseInt(rawData.columns[i]._fieldName.charAt(0), 10)
+        console.log('Column name -> '+columnName+ ', index ->'+columnIndex.toString())
+        cols.push({'title': columnName,
+                   'data': columnIndex})
     }
 
     return  {
