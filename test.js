@@ -126,7 +126,8 @@ function loadResult(result){
 
     console.log('Loading result')
     resultTable = $('#result').DataTable({
-        "fixedHeader" : true,
+        "scrollX" : true,
+        "scrollY" : true,
         "deferRender": true,
         "columns" : query_result['columns'],
         "data" : query_result['data']
