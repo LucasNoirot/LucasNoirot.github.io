@@ -136,7 +136,14 @@ function loadResult(result){
             "zeroRecords": "Aucun résultat...",
             "info": "Afficher page _PAGE_ de _PAGES_",
             "infoEmpty": "Pas de données disponibles",
-            "infoFiltered": "(filtré de _MAX_ entrées totales)"
+            "infoFiltered": "(filtré de _MAX_ entrées totales)",
+            "search":         "Recherche :",
+            "paginate": {
+                "first":      "Première page",
+                "last":       "Dernière page",
+                "next":       "Suivant",
+                "previous":   "Précédent"
+            },
         }
     });
     unlockDownloadButton()
