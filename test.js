@@ -7,7 +7,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 52')
+        console.log('test 53')
 
         
         //Assigne la vue contenant les données à une variable 
@@ -159,7 +159,7 @@ function extractData(rawData){
     for(var i = 0; i < rawData.data.length; i++){
         row = []
         for(var j = 0 ; j < rawData.data[i].length; j++){
-            row.push(rawData.data[i][j]._value)
+            row.push(rawData.data[i][j]._formattedValue)
         }
         body.push(row)
     }
