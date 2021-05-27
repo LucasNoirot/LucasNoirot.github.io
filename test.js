@@ -164,7 +164,8 @@ function extractData(rawData){
     }
 
     for(var i = 0; i < rawData.columns.length; i++){
-        cols.push({'title': rawData.columns[i]._fieldName})
+        cols.push({'title': rawData.columns[i]._fieldName,
+                   'data': i})
     }
 
     return  {
