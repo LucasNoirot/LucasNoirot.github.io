@@ -7,7 +7,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 50')
+        console.log('test 51')
 
         
         //Assigne la vue contenant les données à une variable 
@@ -130,7 +130,9 @@ function loadResult(result){
         "scrollX" : true,
         "scrollY" : true,
         "deferRender": true,
-        "order": [],
+        "columnDefs": [
+            { "orderable": false, "targets": -1 }
+         ],
         "columns" : query_result['columns'],
         "data" : query_result['data'],
         "language": {
