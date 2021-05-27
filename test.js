@@ -126,9 +126,8 @@ function loadResult(result){
 
     console.log('Loading result')
     resultTable = $('#result').DataTable({
-        "scrollX" : true,
-        "scrollY" : true,
-        "pageLength": 20,
+        "fixedHeader" : true,
+        "deferRender": true,
         "columns" : query_result['columns'],
         "data" : query_result['data']
     });
@@ -150,8 +149,7 @@ function extractData(rawData){
     }
 
     for(var i = 0; i < rawData.columns.length; i++){
-        cols.push({'title': rawData.columns[i]._fieldName,
-                   'class': 'display compact'})
+        cols.push({'title': rawData.columns[i]._fieldName})
     }
 
     return  {
@@ -192,11 +190,12 @@ function downloadCSV(){
 
 }
 
-
+//Autorise le click sur la bouton de téléchargement
 function unlockDownloadButton(){
     $('#downloadButton').removeClass('nonAvailable').addClass('available')
 }
 
+//Interdit le click sur le bouton de téléchargement
 function lockDownloadButton(){
     $('#downloadButton').removeClass('available').addClass('nonAvailable')
 }
