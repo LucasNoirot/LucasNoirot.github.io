@@ -7,7 +7,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 46')
+        console.log('test 47')
 
         
         //Assigne la vue contenant les données à une variable 
@@ -75,6 +75,7 @@ function clickQueryButton(){
         return dataSheet.getSummaryDataAsync()
      }).then(function(sumdata){
          //Log et assigne le resultat de la requête dans une table de données
+         console.log(sumData)
          loadResult(sumdata)
      }).catch(function(err){
          console.log('An error occured : '+err)
