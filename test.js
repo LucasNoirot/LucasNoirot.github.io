@@ -130,7 +130,14 @@ function loadResult(result){
         "scrollY" : true,
         "deferRender": true,
         "columns" : query_result['columns'],
-        "data" : query_result['data']
+        "data" : query_result['data'],
+        "language": {
+            "lengthMenu": "Afficher _MENU_ entrées par page",
+            "zeroRecords": "Aucun résultat...",
+            "info": "Afficher page _PAGE_ de _PAGES_",
+            "infoEmpty": "Pas de données disponibles",
+            "infoFiltered": "(filtré de _MAX_ entrées totales)"
+        }
     });
     unlockDownloadButton()
   }
