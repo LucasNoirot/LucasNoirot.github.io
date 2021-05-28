@@ -133,7 +133,13 @@ function extractData(rawData){
 
     for(var i = 0; i < rawData.columns.length; i++){
         columnName = rawData.columns[i]._fieldName.substring(1)
-        columnIndex = parseInt(rawData.columns[i]._fieldName.charAt(0), 10)
+        
+        if('0' >= rawData.columns[i]._fieldName.charAt(1) <= '9'){
+            columnIndex = parseInt(rawData.columns[i]._fieldName.subString(0,2), 10)
+
+        }else{
+            columnIndex = parseInt(rawData.columns[i]._fieldName.charAt(0), 10)
+        }
         console.log('Column name -> '+columnName+ ', index ->'+columnIndex.toString())
         cols.push({'title': columnName,
                    'data': columnIndex})
