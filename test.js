@@ -133,6 +133,8 @@ function extractData(rawData){
 
     for(var i = 0; i < rawData.columns.length; i++){
         columnName = rawData.columns[i]._fieldName.substring(1)
+
+        console.log(rawData.columns[i]._fieldName.charAt(1))
         
         if('0' >= rawData.columns[i]._fieldName.charAt(1) <= '9'){
             console.log('spotted')
