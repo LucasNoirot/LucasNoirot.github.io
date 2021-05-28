@@ -67,6 +67,9 @@ function clickQueryButton(){
      }).then(function(sumdata){
          //Log et assigne le resultat de la requête dans une table de données
          console.log(sumdata)
+         stateParam.changeValueAsync('false').then(function(){
+             console.log('parameter changed back to false')
+         })
          loadResult(sumdata)
      }).catch(function(err){
          console.log('An error occured : '+err)
