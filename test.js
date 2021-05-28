@@ -132,7 +132,7 @@ function extractData(rawData){
     }
 
     for(var i = 0; i < rawData.columns.length; i++){  
-        if('0' <= rawData.columns[i]._fieldName.charAt(1) >= '9'){
+        if(rawData.columns[i]._fieldName.charAt(1) >= '0' && rawData.columns[i]._fieldName.charAt(1) <= '9'){
             console.log('spotted')
             columnIndex = parseInt(rawData.columns[i]._fieldName.substring(0,2), 10)
             columnName = rawData.columns[i]._fieldName.substring(2)
