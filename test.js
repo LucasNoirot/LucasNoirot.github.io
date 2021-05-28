@@ -131,18 +131,15 @@ function extractData(rawData){
         body.push(row)
     }
 
-    for(var i = 0; i < rawData.columns.length; i++){
-        columnName = rawData.columns[i]._fieldName.substring(1)
-
-        console.log(rawData.columns[i]._fieldName.charAt(1))
-        
+    for(var i = 0; i < rawData.columns.length; i++){  
         if('0' >= rawData.columns[i]._fieldName.charAt(1) <= '9'){
             console.log('spotted')
             columnIndex = parseInt(rawData.columns[i]._fieldName.substring(0,2), 10)
-            console.log(columnIndex)
+            columnName = rawData.columns[i]._fieldName.substring(2)
 
         }else{
             columnIndex = parseInt(rawData.columns[i]._fieldName.charAt(0), 10)
+            columnName = rawData.columns[i]._fieldName.substring(1)
         }
         console.log('Column name -> '+columnName+ ', index ->'+columnIndex.toString())
         cols.push({'title': columnName,
