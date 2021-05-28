@@ -135,7 +135,7 @@ function extractData(rawData){
         columnName = rawData.columns[i]._fieldName.substring(1)
         
         if('0' >= rawData.columns[i]._fieldName.charAt(1) <= '9'){
-            columnIndex = parseInt(rawData.columns[i]._fieldName.subString(0,2), 10)
+            columnIndex = parseInt(rawData.columns[i]._fieldName.substring(0,2), 10)
 
         }else{
             columnIndex = parseInt(rawData.columns[i]._fieldName.charAt(0), 10)
