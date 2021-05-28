@@ -1,12 +1,13 @@
 var dashboard, dataSheet, datasource, stateParamName, stateParam, query_result, resultTable;
-
+const inputParams = []
+const queryParams = []
 
 //Initialise l'extension dés que le DOM est chargé
 $(document).ready(function(){  
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('TEST 2.0 1')
+        console.log('test 53')
 
         
         //Assigne la vue contenant les données à une variable 
@@ -53,14 +54,22 @@ function clickQueryButton(){
         resultTable.destroy()
     }
 
-
+    
      
     console.log('Query button clicked')
     
     //Pause l'éxecution une demi seconde pour laisser le temps aux paramètres de l'utiliateur de s'enregistrer
     sleep(1500)
 
-   stateParam.changeValueAsync('true').then(function(){
+
+    getParams().then(function(){
+        console.log('Parameters updated');
+
+        //Passe les paramètres rentrés par l'utilisateur à la requête
+        return passParamsToQuery(inputParams)
+    }).then(function(){
+        return stateParam.changeValueAsync('true')
+     }).then(function(){
          //Rafraichis la source de données ce qui lance la requête mnt que le paramètre est sur true
          console.log(datasource.name + ' queried sucessfully') 
         return dataSheet.getSummaryDataAsync()
@@ -73,6 +82,36 @@ function clickQueryButton(){
      })
 }
 
+
+//Stockes les paramètres allant uniquement servir à recevoir les informations de l'utilisateur dans une list
+//Les autres paramètres (contenant '_') vont uniquement servir à lancer la requête quand le bouton est cliqué
+async function getParams(){
+    let params = await dashboard.getParametersAsync()
+
+    params.forEach(function(param){
+        if(! (param.name.includes('Etat') || param.name.startsWith('_')) ){
+            inputParams.push(param)
+        }else if (param.name.startsWith('_')){
+            queryParams.push(param)
+        }
+    })
+}
+
+//Transfere la valeur des paramètres entrés par l'utilisateur à ceux utilisés dans la requête
+async function passParamsToQuery(params){
+    for(const p of params){
+        queryParamName = '_' + p.name.trim()
+        try{
+            console.log('Looking for '+queryParamName)
+            const queryParam = await dashboard.findParameterAsync(queryParamName)
+            console.log(queryParamName + 'found, now waiting to set new value ->'+p.currentValue)
+            const newValueParam = await queryParam.changeValueAsync(p.currentValue.value)
+            console.log('Value of '+queryParamName + 'changed')
+        }catch(e){
+            console.log('Error while setting a parameter => '+e)
+        }
+    }
+}
 
 
 //Fonction permettant d'arreter l'éxecution (nécessaire pour attendre que les paramètres s'enregistrent)
