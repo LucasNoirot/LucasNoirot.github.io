@@ -136,6 +136,7 @@ function extractData(rawData){
             console.log('spotted')
             columnIndex = parseInt(rawData.columns[i]._fieldName.substring(0,2), 10)
             columnName = rawData.columns[i]._fieldName.substring(2)
+            console.log(column)
 
         }else{
             columnIndex = parseInt(rawData.columns[i]._fieldName.charAt(0), 10)
