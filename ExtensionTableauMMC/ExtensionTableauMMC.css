@@ -1,0 +1,49 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+nav{
+    width: 100%;
+    margin: 0 auto;
+    position: sticky;
+}
+
+nav ul{
+    list-style-type: none;
+}
+
+nav ul::after{
+    content:"";
+    display: table;
+    clear: both;
+}
+
+nav li {
+    display: inline-block;
+    text-align: center;
+    width: 100px;
+}
+
+.available{
+    background-color:forestgreen;
+    color :black;
+}
+
+.available:hover{
+    background-color:#4ed073;
+    font-weight: bold;
+    border: 2px solid black;
+}
+
+.pending{
+    background-color:#4ed073;
+}
+
+.nonAvailable{
+    background-color: dimgrey;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
