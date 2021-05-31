@@ -6,7 +6,6 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('TEST NULL VALUES 4');
 
         
         //Assigne la vue contenant les données à une variable 
@@ -156,7 +155,7 @@ function extractData(rawData){
 //Fonction convertissant le résultat en format CSv et lançant le téléchargement
 function downloadCSV(){
     console.log('clicked');
-    let content = "data:text/csv;charset=utf-8,";
+    let content = "\ufeffdata:text/csv;charset=utf-8,";
 
     if(query_result == null){
         console.log('Trying to create CSV from empty result');
