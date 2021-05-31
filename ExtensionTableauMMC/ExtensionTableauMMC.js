@@ -155,7 +155,7 @@ function extractData(rawData){
 //Fonction convertissant le résultat en format CSv et lançant le téléchargement
 function downloadCSV(){
     console.log('clicked');
-    let content = "\ufeffdata:text/csv;charset=utf-8,";
+    let content = "data:text/csv;charset=utf-8,\ufeff";
 
     if(query_result == null){
         console.log('Trying to create CSV from empty result');
