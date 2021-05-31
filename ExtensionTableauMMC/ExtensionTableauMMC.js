@@ -126,7 +126,7 @@ function extractData(rawData){
     for(var i = 0; i < rawData.data.length; i++){
         row = [];
         for(var j = 0 ; j < rawData.data[i].length; j++){
-            let val = rawData.data[i][j]._formattedValue = 'Null' ? '' : rawData.data[i][j]._formattedValue;
+            let val = rawData.data[i][j]._nativeValue = null ? '' : rawData.data[i][j]._formattedValue;
             row.push(val);
         }
         body.push(row);
