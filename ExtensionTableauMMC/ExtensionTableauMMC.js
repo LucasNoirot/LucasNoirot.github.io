@@ -1,10 +1,12 @@
-var dashboard, dataSheet, datasource, stateParamName, stateParam, query_result, resultTable;
+var dashboard, dataSheet, datasource, stateParamName, stateParam, query_result, resultTable, sumData;
 
 
 //Initialise l'extension dés que le DOM est chargé
 $(document).ready(function(){  
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
+
+        console.log('test 2.0')
 
 
         
