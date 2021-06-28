@@ -71,7 +71,7 @@ function clickQueryButton(){
          stateParam.changeValueAsync('false').then(function(){
              console.log('parameter changed back to false');
          })
-         if(sumData.rows.length() <= 0){
+         if(!sumData){
              alert('Pas de résultat pour cette recherche, veuillez essayer avec d\'autres critères.')
              return
          }
