@@ -6,7 +6,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 2.0')
+        console.log('test 3.0')
 
 
         
@@ -48,10 +48,7 @@ function clickQueryButton(){
         lockDownloadButton();
     }
     if(query_result != null){
-        console.log('removing previous data')
-        query_result = null;
-        resultTable.clear();
-        resultTable.destroy();
+        
     }
 
 
@@ -91,6 +88,13 @@ function sleep(milliseconds) {
       currentDate = Date.now();
     } while (currentDate - date < milliseconds);
   }
+
+function refresh() {
+    console.log('refreshing')
+    query_result = null;
+    resultTable.clear();
+    resultTable.destroy();
+}
 
 
 //Fonction chargeant les données renvoyées par le serveur sur la page
