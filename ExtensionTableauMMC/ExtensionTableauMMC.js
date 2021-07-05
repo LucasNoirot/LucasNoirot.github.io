@@ -6,7 +6,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 3.0')
+        console.log('test 3.1')
 
 
         
@@ -48,7 +48,7 @@ function clickQueryButton(){
         lockDownloadButton();
     }
     if(query_result != null){
-        
+        refresh(); 
     }
 
 
@@ -69,6 +69,7 @@ function clickQueryButton(){
              console.log('parameter changed back to false');
          })
          if(!sumData){
+             refresh()
              alert('Pas de résultat pour cette recherche, veuillez essayer avec d\'autres critères.')
              return
          }
@@ -91,6 +92,7 @@ function sleep(milliseconds) {
 
 function refresh() {
     console.log('refreshing')
+    sumData != null;
     query_result = null;
     resultTable.clear();
     resultTable.destroy();
