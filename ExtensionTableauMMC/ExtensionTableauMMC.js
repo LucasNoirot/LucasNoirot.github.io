@@ -69,8 +69,9 @@ function clickQueryButton(){
              console.log('parameter changed back to false');
          })
          if(!sumData){
-             refresh()
+             console.log('REFRESH CALLED AS NO RESULT')
              alert('Pas de résultat pour cette recherche, veuillez essayer avec d\'autres critères.')
+             refresh() 
              return
          }
          loadResult(sumdata)
@@ -94,8 +95,13 @@ function refresh() {
     console.log('refreshing')
     sumData != null;
     query_result = null;
-    resultTable.clear();
-    resultTable.destroy();
+    try {
+        resultTable.clear();
+        resultTable.destroy();
+    }catch(e){
+        console.log('Error while trying to clear table -> '+e)
+    }
+    
 }
 
 
