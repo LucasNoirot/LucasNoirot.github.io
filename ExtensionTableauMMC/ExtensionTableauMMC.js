@@ -68,7 +68,7 @@ function clickQueryButton(){
          stateParam.changeValueAsync('false').then(function(){
              console.log('parameter changed back to false');
          })
-         if(!sumData){
+         if(!sumData.data().any()){
              console.log('REFRESH CALLED AS NO RESULT')
              alert('Pas de résultat pour cette recherche, veuillez essayer avec d\'autres critères.')
              refresh() 
