@@ -6,7 +6,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 3.1')
+        console.log('test 3.2')
 
 
         
@@ -67,7 +67,7 @@ function clickQueryButton(){
          console.log(sumdata);
          stateParam.changeValueAsync('false').then(function(){
              console.log('parameter changed back to false');
-             if(!sumData.data().any()){
+             if(!sumdata.data().any()){
                 console.log('REFRESH CALLED AS NO RESULT')
                 alert('Pas de résultat pour cette recherche, veuillez essayer avec d\'autres critères.')
                 refresh() 
