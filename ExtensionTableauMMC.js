@@ -1,4 +1,4 @@
-var dashboard, dataSheet, datasource, stateParamName, stateParam, query_result, resultTable, sumData;
+var dashboard, dataSheet, datasource, stateParamName, stateParam, query_result, resultTable, sumdata;
 
 
 //Initialise l'extension dés que le DOM est chargé
@@ -93,7 +93,7 @@ function sleep(milliseconds) {
 
 function refresh() {
     console.log('refreshing')
-    sumData != null;
+    sumdata = null;
     query_result = null;
     try {
         resultTable.clear();
