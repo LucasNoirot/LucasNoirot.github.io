@@ -8,7 +8,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 3.8')
+        console.log('test 3.9')
 
         
         //Assigne la vue contenant les données à une variable 
@@ -21,8 +21,11 @@ $(document).ready(function(){
         });
 
         window.onbeforeunload = function(){
+            if(stateParam == null){
+                return
+            }
             if(stateParam == true){
-                backToFalse = true
+                return
             }
             throw 'Request aborted by user'
         }
