@@ -1,4 +1,5 @@
 var dashboard, dataSheet, datasource, stateParamName, stateParam, query_result, resultTable, sumdata;
+var backToFalse = false;
 
 
 
@@ -7,7 +8,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 3.7')
+        console.log('test 3.8')
 
         
         //Assigne la vue contenant les données à une variable 
@@ -20,17 +21,10 @@ $(document).ready(function(){
         });
 
         window.onbeforeunload = function(){
-            var flag = false
-
-            console.log('setting param to false')
-            stateParam.changeValueAsync('false').then( function(){
-                console.log('parameter seuccessfully set to false')
-                flag = true
-            })
-
-            while(flag == false){
-                sleep(1)
+            if(stateParam == true){
+                backToFalse = true
             }
+            throw 'Request aborted by user'
         }
        
 
@@ -50,6 +44,18 @@ $(document).ready(function(){
             console.log('initial value set to false');
         }).catch(function(err){
             console.log('Error while initializing extension => '+err);
+
+            if(backToFalse = false){
+                stateParam.changeValueAsync('false').then( function(){
+                    console.log('parameter seuccessfully set to false')
+                    backToFalse = true
+                })
+    
+                while(backToFalse == false){
+                    sleep(1)
+                }
+            }
+            
         })
     });
 
