@@ -7,7 +7,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 3.6')
+        console.log('test 3.7')
 
         
         //Assigne la vue contenant les données à une variable 
@@ -20,12 +20,17 @@ $(document).ready(function(){
         });
 
         window.onbeforeunload = function(){
+            var flag = false
+
             console.log('setting param to false')
-            sleep(1500)
             stateParam.changeValueAsync('false').then( function(){
                 console.log('parameter seuccessfully set to false')
+                flag = true
             })
-            
+
+            while(flag == false){
+                sleep(1)
+            }
         }
        
 
