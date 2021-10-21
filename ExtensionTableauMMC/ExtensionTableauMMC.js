@@ -8,7 +8,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 3.10')
+        console.log('test 3.11')
 
         
         //Assigne la vue contenant les données à une variable 
@@ -25,11 +25,11 @@ $(document).ready(function(){
                 console.log('stateparam null')
                 return
             }
-            if(stateParam == true){
-                console.log('stateparam true')
+            if(stateParam == false){
+                console.log('stateparam already false')
                 return
             }
-            throw 'Request aborted by user'
+            throw Error('Request aborted by user')
         }
        
 
@@ -46,8 +46,11 @@ $(document).ready(function(){
             //Lui assigne la valeur false afin d'empecher qu'une requête se lance à l'ouverture de la page
             return stateParam.changeValueAsync('false')
         }).then(function (){
+
             console.log('initial value set to false');
+
         }).catch(function(err){
+
             console.log('Error while initializing extension => '+err);
 
             if(backToFalse == false){
