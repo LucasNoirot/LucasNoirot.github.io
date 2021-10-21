@@ -8,7 +8,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 3.9')
+        console.log('test 3.10')
 
         
         //Assigne la vue contenant les données à une variable 
@@ -22,9 +22,11 @@ $(document).ready(function(){
 
         window.onbeforeunload = function(){
             if(stateParam == null){
+                console.log('stateparam null')
                 return
             }
             if(stateParam == true){
+                console.log('stateparam true')
                 return
             }
             throw 'Request aborted by user'
@@ -48,7 +50,7 @@ $(document).ready(function(){
         }).catch(function(err){
             console.log('Error while initializing extension => '+err);
 
-            if(backToFalse = false){
+            if(backToFalse == false){
                 stateParam.changeValueAsync('false').then( function(){
                     console.log('parameter seuccessfully set to false')
                     backToFalse = true
