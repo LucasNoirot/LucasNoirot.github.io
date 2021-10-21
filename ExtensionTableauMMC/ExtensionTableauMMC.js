@@ -8,7 +8,7 @@ $(document).ready(function(){
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('test 3.11')
+        console.log('version 3.11')
 
         
         //Assigne la vue contenant les données à une variable 
@@ -49,7 +49,7 @@ $(document).ready(function(){
 
             console.log('initial value set to false');
 
-        }).catch(function(err){
+        }).catch(err => {
 
             console.log('Error while initializing extension => '+err);
 
