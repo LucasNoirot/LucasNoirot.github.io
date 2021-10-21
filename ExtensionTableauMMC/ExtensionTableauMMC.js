@@ -21,6 +21,7 @@ $(document).ready(function(){
 
         window.onbeforeunload = function(){
             console.log('setting param to false')
+            sleep(1500)
             stateParam.changeValueAsync('false').then( function(){
                 console.log('parameter seuccessfully set to false')
             })
