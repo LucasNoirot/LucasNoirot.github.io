@@ -1,14 +1,13 @@
 var dashboard, dataSheet, datasource, stateParamName, stateParam, query_result, resultTable, sumdata;
 
 
-
-
 //Initialise l'extension dés que le DOM est chargé
 $(document).ready(function(){  
     tableau.extensions.initializeAsync().then(function () {      
         dashboard = tableau.extensions.dashboardContent.dashboard;
 
-        console.log('version 3.12')
+        console.log('test 3.4')
+
 
         
         //Assigne la vue contenant les données à une variable 
@@ -19,10 +18,7 @@ $(document).ready(function(){
                 stateParamName = dataSheet.name.replace("Data", "Etat");
             }
         });
-
-   
-       
-
+        
         //Assigne la source de données à une variable
         dataSheet.getDataSourcesAsync().then(function (sources){
             datasource = sources[0];
@@ -36,14 +32,9 @@ $(document).ready(function(){
             //Lui assigne la valeur false afin d'empecher qu'une requête se lance à l'ouverture de la page
             return stateParam.changeValueAsync('false')
         }).then(function (){
-
             console.log('initial value set to false');
-
-        }).catch(err => {
-
+        }).catch(function(err){
             console.log('Error while initializing extension => '+err);
-
-            
         })
     });
 
@@ -120,6 +111,10 @@ function loadResult(result){
 
     console.log('Loading result');
     resultTable = $('#result').DataTable({
+        "columnDefs" : [{
+            "defaultContent": "-",
+            "targets": "_all"
+        }],
         "scrollX" : true,
         "scrollY" : true,
         "deferRender": true,
